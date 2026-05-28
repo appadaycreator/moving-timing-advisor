@@ -3,7 +3,7 @@
   "short_name": "moving-timin",
   "start_url": "/moving-timing-advisor/",
   "display": "standalone",
-  "background_color": "#6366f1",
+  "background_color": "#ffffff",
   "theme_color": "#7c3aed",
   "scope": "/moving-timing-advisor/"
 }
