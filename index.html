@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#7c3aed" />
+<meta name="theme-color" content="#6366F1" />
     <title>引っ越し時期・費用診断【無料】無料診断・アドバイス</title>
     <meta name="description" content="引っ越し希望エリア・家族構成・予算から最適な引っ越し時期と費用の目安を診断。登録不要・完全無料でご利用いただけます。">
     <link rel="canonical" href="https://appadaycreator.com/moving-timing-advisor/">
@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 <meta name="twitter:description" content="引っ越し希望エリア・家族構成・予算から最適な引っ越し時期と費用の目安を診断。登録不要・完全無料でご利用いただけます。" />
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="引っ越し時期・費用診断【無料】無料診断・アドバイス" />
-    
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,24 +43,31 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', 'Noto Sans JP', sans-serif; background: linear-gradient(135deg, #E0E7FF 0%, #F0F4FF 100%); min-height: 100vh; color: #333; line-height: 1.6; }
-        .site-header { background: #7c3aed; color: white; padding: 32px 20px; text-align: center; }
+        .site-header { background: #6366F1; color: white; padding: 32px 20px; text-align: center; }
         .site-header .emoji { font-size: 52px; margin-bottom: 8px; }
         .site-header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
         .site-header p { font-size: 14px; opacity: 0.9; }
         .container { max-width: 800px; margin: 0 auto; padding: 16px; }
         .card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 16px; }
-        .btn { background: #7c3aed; color: white; border: none; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; transition: opacity .2s; min-height: 48px; touch-action: manipulation; }
+        .btn { background: #6366F1; color: white; border: none; padding: 14px 24px; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; transition: opacity .2s; min-height: 48px; touch-action: manipulation; }
         .btn:hover { opacity: 0.9; }
         .btn:active { transform: scale(0.98); }
-        .btn:focus-visible { outline: 3px solid #7c3aed; outline-offset: 3px; }
+        .btn:focus-visible { outline: 3px solid #6366F1; outline-offset: 3px; }
         input, select, textarea { width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 15px; margin-top: 4px; font-family: inherit; min-height: 44px; }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: #7c3aed; box-shadow: 0 0 0 3px #7c3aed22; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #6366F1; box-shadow: 0 0 0 3px #6366F122; }
         label { font-size: 13px; font-weight: 600; color: #555; display: block; margin-top: 14px; margin-bottom: 2px; }
         .result { display: none; }
         .result.show { display: block; }
-        .result-value { font-size: 36px; font-weight: 700; color: #7c3aed; text-align: center; padding: 16px 0; }
-        .badge { display: inline-block; background: #7c3aed20; color: #7c3aed; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .result-value { font-size: 36px; font-weight: 700; color: #6366F1; text-align: center; padding: 16px 0; }
+        .badge { display: inline-block; background: #6366F120; color: #6366F1; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        /* ── サービス固有CSS ── */
+        .quiz-opt { width:100%; padding:12px 14px; margin-bottom:8px; border:2px solid #e5e7eb; border-radius:10px; font-size:14px; cursor:pointer; background:#fff; text-align:left; transition:border-color .15s, background .15s; font-family:inherit; }
+        .quiz-opt:hover { border-color:#6366F1; background:#f0f0ff; }
+        .quiz-opt:active { transform:scale(0.99); background:#e0e7ff; }
+        .quiz-opt:focus-visible { outline:3px solid #6366F1; outline-offset:2px; }
+        .q-back-btn { background:none; border:1px solid #e2e8f0; color:#666; padding:6px 12px; border-radius:6px; font-size:12px; cursor:pointer; font-family:inherit; }
+        .q-back-btn:hover { border-color:#6366F1; color:#6366F1; }
         @media (max-width: 480px) {
             .site-header { padding: 24px 16px; }
             .site-header h1 { font-size: 20px; }
@@ -68,9 +75,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
             .btn { font-size: 15px; padding: 13px 20px; }
             .result-value { font-size: 28px; }
         }
-        /* ── サービス固有CSS ── */
 
-    
 @media print{
   header,footer,nav,button,.no-print,
   [class*="share"],[class*="affiliate"],[id*="share"],
@@ -85,7 +90,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXQGZRF9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <a href="#main-content" class="sr-only" style="position:absolute;top:8px;left:8px;background:#7c3aed;color:white;padding:8px 16px;border-radius:6px;z-index:9999;text-decoration:none;font-size:14px;" tabindex="1">メインコンテンツへスキップ</a>
+    <a href="#main-content" class="sr-only" style="position:absolute;top:8px;left:8px;background:#6366F1;color:white;padding:8px 16px;border-radius:6px;z-index:9999;text-decoration:none;font-size:14px;" tabindex="1">メインコンテンツへスキップ</a>
 
     <header class="site-header" role="banner">
         <div class="emoji" aria-hidden="true">📦</div>
@@ -104,20 +109,25 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
           <button class="btn" onclick="startQuiz()">診断スタート →</button>
         </div>
         <div id="quiz-area" style="display:none;">
-          <div style="font-size:12px;color:#999;margin-bottom:8px;">
-            質問 <span id="q-num">1</span> / <span id="q-total">5</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <div style="font-size:12px;color:#999;">質問 <span id="q-num">1</span> / <span id="q-total">5</span></div>
+            <button id="q-back" class="q-back-btn" onclick="goBack()" style="display:none;" aria-label="前の質問へ戻る">← 前へ</button>
           </div>
-          <div id="q-progress" style="height:4px;background:#e5e7eb;border-radius:2px;margin-bottom:16px;">
-            <div id="q-bar" style="height:100%;background:#7c3aed;border-radius:2px;transition:width .3s;width:20%;"></div>
+          <div id="q-progress" style="height:4px;background:#e5e7eb;border-radius:2px;margin-bottom:16px;" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div id="q-bar" style="height:100%;background:#6366F1;border-radius:2px;transition:width .3s;width:0%;"></div>
           </div>
-          <p id="q-text" style="font-size:16px;font-weight:600;margin-bottom:16px;"></p>
-          <div id="q-options" class="space-y-2"></div>
+          <p id="q-text" style="font-size:16px;font-weight:600;margin-bottom:16px;" role="heading" aria-level="3"></p>
+          <div id="q-options" role="group" aria-label="回答を選んでください"></div>
         </div>
         <div class="result" id="result">
           <div class="card">
-            <h3 id="r-title" style="font-size:18px;font-weight:700;margin-bottom:8px;color:#7c3aed;"></h3>
-            <p id="r-desc" style="color:#444;font-size:14px;line-height:1.7;"></p>
-            <button class="btn" style="margin-top:16px;" onclick="location.reload()">もう一度診断</button>
+            <h3 id="r-title" style="font-size:18px;font-weight:700;margin-bottom:8px;color:#6366F1;"></h3>
+            <p id="r-desc" style="color:#444;font-size:14px;line-height:1.7;margin-bottom:16px;"></p>
+            <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+              <a id="r-share-twitter" href="#" target="_blank" rel="noopener" aria-label="診断結果をXでシェア" style="background:#1DA1F2;color:white;padding:8px 14px;border-radius:8px;font-size:13px;text-decoration:none;font-weight:600;min-height:44px;display:inline-flex;align-items:center;">𝕏 結果をシェア</a>
+              <a id="r-share-line" href="#" target="_blank" rel="noopener" aria-label="診断結果をLINEでシェア" style="background:#00B900;color:white;padding:8px 14px;border-radius:8px;font-size:13px;text-decoration:none;font-weight:600;min-height:44px;display:inline-flex;align-items:center;">LINE でシェア</a>
+            </div>
+            <button class="btn" onclick="location.reload()">もう一度診断</button>
           </div>
         </div>
 
@@ -125,9 +135,9 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
         <div class="card" style="margin-top:8px;">
             <h3 style="font-size:13px;font-weight:600;color:#888;margin-bottom:10px;">🔗 関連サービス</h3>
             <div style="display:flex;flex-direction:column;gap:6px;">
-                <a href="https://appadaycreator.com/moving-cost-simulator/" style="color:#7c3aed;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">引越し費用シミュレーター →</a>
-                <a href="https://appadaycreator.com/moving-checklist-app/" style="color:#7c3aed;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">引越しToDoリスト・チェックアプリ →</a>
-                <a href="https://appadaycreator.com/transfer-cost-advisor/" style="color:#7c3aed;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">転勤・単身赴任 費用準備診断 →</a>
+                <a href="https://appadaycreator.com/moving-cost-simulator/" style="color:#6366f1;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">引越し費用シミュレーター →</a>
+                <a href="https://appadaycreator.com/moving-checklist-app/" style="color:#6366f1;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">引越しToDoリスト・チェックアプリ →</a>
+                <a href="https://appadaycreator.com/transfer-cost-advisor/" style="color:#6366f1;font-size:13px;text-decoration:none;padding:6px 0;border-bottom:1px solid #f1f5f9;">転勤・単身赴任 費用準備診断 →</a>
             </div>
         </div>
 
@@ -188,8 +198,8 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
         </div>
     </main>
 
-    <footer style="text-align:center;padding:20px;color:white;font-size:12px;opacity:0.75;margin-top:8px;">
-        <p><a href="https://appadaycreator.github.io/" style="color:white;">AppADayCreator</a>
+    <footer style="text-align:center;padding:20px;color:white;font-size:12px;background:#374151;margin-top:8px;">
+        <p><a href="https://appadaycreator.com/" style="color:white;">AppADayCreator</a>
         | <a href="privacy-policy.html" style="color:white;">プライバシーポリシー</a>
         | <a href="terms.html" style="color:white;">利用規約</a>
         | <a href="contact.html" style="color:white;">お問い合わせ</a></p>
@@ -198,7 +208,6 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     </footer>
 
     <script>
-    // ★ここだけ実装（約15行）★
     const QUESTIONS = [
       { text: 'Q1. 引っ越しの主な理由は？', opts: ['進学・就職', '転勤・仕事の都合', '結婚・同棲', '子育て・家族都合', 'その他・住み替え'] },
       { text: 'Q2. 希望の引っ越し時期は？', opts: ['急いでいる（1ヶ月以内）', '3ヶ月以内に動きたい', '半年以内でOK', '1年以内で計画中'] },
@@ -206,45 +215,108 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
       { text: 'Q4. 荷物の量は？', opts: ['単身・荷物少なめ', '2人暮らし程度', '家族3〜4人分', '大家族・荷物多め'] },
       { text: 'Q5. 引っ越し予算の目安は？', opts: ['5万円以下', '5〜15万円', '15〜30万円', '30万円以上'] },
     ];
-    function getResult(answers){
+
+    function getResult(answers) {
       const [reason, timing, dist, load, budget] = answers.map(a => a.idx);
-      // 急ぎ引っ越し
-      if(timing === 0) {
-        return { title: '⚡ 急ぎ引っ越し対応タイプ', desc: '1ヶ月以内の引っ越しは繁忙期を避けられれば逆にチャンスです。「引越し侍」「SUUMO引越し」などの一括見積もりサービスで直前対応可能な業者を素早く探しましょう。料金交渉は電話で行うと効果的。前日までに梱包を済ませると当日がスムーズです。' };
+
+      // 急ぎ×低予算 → 格安手段優先
+      if (timing === 0 && budget === 0) {
+        return { title: '⚡ 格安急ぎ引っ越しタイプ', desc: '1ヶ月以内・5万円以下の引っ越しは赤帽や軽トラックレンタル（1〜2万円）が最安手段です。不用品はメルカリ・ジモティーで事前に処分。「引越し侍」で急ぎ対応・格安業者に絞り込み、電話で強気に値引き交渉するのがコツです。友人の手伝いを借りてドリンク代のみで済ませるケースも。' };
       }
-      // 単身・荷物少・近距離 → 単身パック
-      if(load === 0 && (dist === 0 || dist === 1)) {
-        return { title: '🚛 単身パックがおすすめタイプ', desc: '荷物が少なく近距離なら単身パック（ヤマトの単身パックS/L、赤帽など）が最安です。相場は2〜5万円程度。不用品は事前に処分してボックスに収まるよう準備すると格安で引っ越せます。平日・午後便を選ぶとさらに割安になります。' };
+      // 急ぎ（予算あり）
+      if (timing === 0) {
+        return { title: '⚡ 急ぎ引っ越し対応タイプ', desc: '1ヶ月以内の引っ越しは繁忙期を避けられれば逆にチャンスです。「引越し侍」「SUUMO引越し」で直前対応可能な業者を素早く探しましょう。料金交渉は電話で行うと効果的。前日までに梱包を済ませると当日がスムーズです。予算に余裕があればフルサービス（荷造り代行付き）も検討できます。' };
       }
-      // 3〜4月（繁忙期）注意
-      if(reason === 0 || reason === 1) {
-        return { title: '🌸 繁忙期（3〜4月）注意タイプ', desc: '進学・就職・転勤は3〜4月集中で引っ越し料金が1.5〜2倍に跳ね上がります。業者の予約は2〜3ヶ月前が必須。平日・午後便の指定でコストを抑えられます。荷物を減らしてレンタルトラック活用も有効です。早期予約割引で最大30%オフになるケースもあります。' };
+      // 単身×近距離×低予算 → 単身パック最安
+      if (load === 0 && (dist === 0 || dist === 1) && budget === 0) {
+        return { title: '🚛 単身パック最安タイプ', desc: '荷物が少なく近距離・低予算なら単身パック（2〜4万円）が最適解です。ヤマト単身パックS、赤帽などで比較を。不用品はジモティーで処分すればボックス1つに収まることも。平日・午後便でさらに30%割安になります。5万円以内でも充分おさまる可能性大です。' };
       }
-      // 大型・遠距離 → 一括見積もり
-      if(load >= 2 || dist >= 2) {
+      // 単身×近距離
+      if (load === 0 && (dist === 0 || dist === 1)) {
+        return { title: '🚛 単身パックがおすすめタイプ', desc: '荷物が少なく近距離なら単身パック（ヤマトの単身パックS/L、赤帽など）が最安です。相場は2〜5万円程度。不用品は事前に処分してボックスに収まるよう準備すると格安で引っ越せます。平日・午後便を選ぶとさらに割安になります。余剰予算でホテル1泊取ると当日の疲れも軽減できます。' };
+      }
+      // 繁忙期×高予算 → フルサービス
+      if ((reason === 0 || reason === 1) && budget >= 3) {
+        return { title: '🌸 繁忙期・フルサービス計画タイプ', desc: '進学・転勤の3〜4月は繁忙期ですが、予算30万円以上ならフルサービス（荷造り代行・エアコン移設・不用品回収込み）で業者に全て任せられます。3ヶ月前に予約して最良の業者を確保し、引っ越し後の住所変更（免許・銀行・保険・役所）のリスト作りに時間を充てましょう。' };
+      }
+      // 繁忙期（一般）
+      if (reason === 0 || reason === 1) {
+        return { title: '🌸 繁忙期（3〜4月）注意タイプ', desc: '進学・就職・転勤は3〜4月集中で引っ越し料金が1.5〜2倍に跳ね上がります。業者の予約は2〜3ヶ月前が必須。平日・午後便の指定でコストを抑えられます。早期予約割引で最大30%オフになるケースもあります。引越し侍で複数業者に一括見積もりを取ることが節約の第一歩です。' };
+      }
+      // 大型×遠距離 → 徹底比較
+      if (dist >= 3 && load >= 2) {
+        return { title: '🚚 大型遠距離・徹底比較タイプ', desc: '大型荷物×遠距離は最もコスト差が大きいパターンです。必ず5社以上の見積もりを取り、訪問見積もりで正確な金額を出してもらいましょう。エアコン取り外し・取り付け、大型家電の処分・購入も含めてトータルコストで比較することが重要。引っ越し後の住所変更や転校手続きも早めに準備を。' };
+      }
+      // 大型または遠距離
+      if (load >= 2 || dist >= 2) {
         return { title: '📦 一括見積もり必須タイプ', desc: '大型荷物や遠距離引っ越しは業者によって料金差が5〜10万円開くことも。必ず「引越し侍」「SUUMO引越し」で3社以上の相見積もりを取りましょう。オプション（エアコン取り付け・不用品回収）の交渉も同時に行うとお得です。訪問見積もりで正確な金額を出してもらうことが重要です。' };
       }
-      // 閑散期狙い
+      // 閑散期×低予算 → 節約最大化
+      if (budget <= 1) {
+        return { title: '🍂 閑散期・節約最大化タイプ', desc: '5月〜2月の閑散期かつ低予算なら、最も安く引っ越せるチャンスです。「一番安い日はいつですか？」と業者に直接聞くことで大幅値引きができることも。不用品の事前処分でトラックサイズを下げ、平日・午後便を指定すると最大50%オフも可能。赤帽・軽トラレンタルも検討してみてください。' };
+      }
+      // デフォルト：閑散期活用
       return { title: '🍂 閑散期狙いタイプ（5〜2月）', desc: '5月〜2月は引っ越し閑散期で料金が30〜50%オフになります。特に6〜9月の夏、11〜1月の年末年始前後が最もリーズナブル。業者に「一番安い日はいつですか？」と聞くだけで大幅値引きできることも。余裕を持ったスケジューリングで大きく節約しましょう。' };
     }
-    // ★以下変更不要★
-    const BTN='#7c3aed'; let cur=0; const ans=[];
-    document.addEventListener('DOMContentLoaded',()=>{ document.getElementById('q-total').textContent=QUESTIONS.length; });
-    function startQuiz(){ cur=0;ans.length=0; document.getElementById('quiz-start').style.display='none'; document.getElementById('quiz-area').style.display='block'; document.getElementById('result').classList.remove('show'); renderQ(); }
-    function renderQ(){
-      const q=QUESTIONS[cur];
-      document.getElementById('q-num').textContent=cur+1;
-      document.getElementById('q-bar').style.width=((cur+1)/QUESTIONS.length*100)+'%';
-      document.getElementById('q-text').textContent=q.text;
-      document.getElementById('q-options').innerHTML=q.opts.map((o,i)=>`<button onclick="answer(${i})" style="width:100%;padding:12px;margin-bottom:8px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;cursor:pointer;background:#fff;text-align:left;">${o}</button>`).join('');
+
+    let cur = 0;
+    const ans = [];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('q-total').textContent = QUESTIONS.length;
+    });
+
+    function startQuiz() {
+      cur = 0;
+      ans.length = 0;
+      document.getElementById('quiz-start').style.display = 'none';
+      document.getElementById('quiz-area').style.display = 'block';
+      document.getElementById('result').classList.remove('show');
+      renderQ();
     }
-    function answer(idx){ ans.push({idx}); cur++; if(cur>=QUESTIONS.length) showResult(); else renderQ(); }
-    function showResult(){
-      document.getElementById('quiz-area').style.display='none';
-      const r=getResult(ans);
-      document.getElementById('r-title').textContent=r.title;
-      document.getElementById('r-desc').textContent=r.desc;
+
+    function renderQ() {
+      const q = QUESTIONS[cur];
+      document.getElementById('q-num').textContent = cur + 1;
+      const pct = ((cur + 1) / QUESTIONS.length * 100);
+      document.getElementById('q-bar').style.width = pct + '%';
+      document.getElementById('q-bar').parentElement.setAttribute('aria-valuenow', pct);
+      document.getElementById('q-text').textContent = q.text;
+      document.getElementById('q-back').style.display = cur > 0 ? 'block' : 'none';
+      document.getElementById('q-options').innerHTML = q.opts.map((o, i) =>
+        `<button class="quiz-opt" onclick="answer(${i})" aria-label="${o}">${o}</button>`
+      ).join('');
+    }
+
+    function goBack() {
+      if (cur > 0) {
+        cur--;
+        ans.pop();
+        renderQ();
+      }
+    }
+
+    function answer(idx) {
+      ans.push({ idx });
+      cur++;
+      if (cur >= QUESTIONS.length) showResult();
+      else renderQ();
+    }
+
+    function showResult() {
+      document.getElementById('quiz-area').style.display = 'none';
+      const r = getResult(ans);
+      document.getElementById('r-title').textContent = r.title;
+      document.getElementById('r-desc').textContent = r.desc;
+      // 診断結果を含む動的シェアURL生成
+      const siteUrl = 'https://appadaycreator.com/moving-timing-advisor/';
+      const shareText = '引っ越し診断結果: ' + r.title + ' #引っ越し #無料ツール';
+      document.getElementById('r-share-twitter').href =
+        'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(siteUrl);
+      document.getElementById('r-share-line').href =
+        'https://line.me/R/msg/text/?' + encodeURIComponent(shareText + '\n' + siteUrl);
       document.getElementById('result').classList.add('show');
+      setTimeout(() => document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     }
     </script>
 </body>
