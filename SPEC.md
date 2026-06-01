@@ -18,8 +18,19 @@
 ## 技術スタック
 
 - HTML5 / CSS3 / Vanilla JavaScript
-- PWA対応（manifest.json / Service Worker）
+- PWA対応（manifest.json / theme-color #6366F1）
 - レスポンシブデザイン（モバイルファースト）
+
+## バージョン履歴
+
+### v1.1.0（2026-05-29）
+- PWA theme-color を `#6366F1`（インディゴ）に統一（manifest.json・全HTMLページ）
+- 診断結果ページに動的SNSシェアボタン追加（X・LINE、結果タイトルを含むテキスト）
+- 診断中に「← 前へ」ボタンを追加（Q2以降で前の質問に戻れる）
+- 診断ロジック拡張：予算(Q5)を考慮したブランチ追加・結果パターンを4→9種に拡張
+- フッター背景色追加（`background:#374151`）でWCAG 2.1 AA対応
+- 診断完了時に結果セクションへのスムーズスクロールを追加
+- キーボードアクセシビリティ改善（`quiz-opt`クラス・focus-visible・aria属性）
 
 ## 使い方
 
