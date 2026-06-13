@@ -3,8 +3,8 @@
 ## 概要
 
 **サービス名**: Moving Timing Advisor
-**バージョン**: 1.2.2
-**更新日**: 2026-06-04
+**バージョン**: 1.2.3
+**更新日**: 2026-06-06
 **URL**: https://appadaycreator.com/moving-timing-advisor/
 
 引っ越し希望エリア・家族構成・予算から最適な引っ越し時期と費用の目安を診断。登録不要・完全無料でご利用いただけます。
@@ -18,10 +18,14 @@
 ## 技術スタック
 
 - HTML5 / CSS3 / Vanilla JavaScript
-- PWA対応（manifest.json / theme-color #FF6B35）
+- PWA対応（manifest.json / theme-color #6366F1）
 - レスポンシブデザイン（モバイルファースト）
 
 ## バージョン履歴
+
+### v1.2.3（2026-06-06）
+- 🎨 **PWA theme-color統一**: manifest.json と index.html の theme-color を #FF6B35（オレンジ）→ #6366F1（インディゴ）に統一・サービスのブランドカラーと一致
+- ♿ **アクセシビリティ改善**: スキップリンク（メインコンテンツへスキップ）を focus-visible 時に表示するように改善・キーボードナビゲーション効率向上
 
 ### v1.2.2（2026-06-04）
 - 🍎 **iOS PWA対応強化**: `apple-mobile-web-app-capable`・`apple-mobile-web-app-status-bar-style`・`apple-mobile-web-app-title` を追加・iOS Safari でのホーム画面追加時に theme-color が正しく反映されるように改善
