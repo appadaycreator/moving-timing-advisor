@@ -114,6 +114,9 @@ a{text-decoration:none;color:inherit;}
 .quiz-opt:hover{border-color:#0369A1;background:#EFF6FF;color:#0369A1;}
 .quiz-opt:active{transform:scale(.98);background:#dbeafe;}
 .quiz-opt:focus-visible{outline:3px solid #0369A1;outline-offset:2px;}
+.quiz-opt-icon{flex-direction:column;align-items:center;text-align:center;gap:8px;padding:14px 8px;min-height:100px;}
+.quiz-opt-icon .quiz-opt-img{width:46px;height:46px;object-fit:contain;}
+.quiz-opt-icon span{font-size:12px;font-weight:700;line-height:1.3;}
 
 /* Result */
 .result{display:none;}
@@ -695,7 +698,7 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
       { text: 'Q1. 引っ越しの主な理由は？', opts: ['進学・就職', '転勤・仕事の都合', '結婚・同棲', '子育て・家族都合', 'その他・住み替え'] },
       { text: 'Q2. 希望の引っ越し時期は？', opts: ['急いでいる（1ヶ月以内）', '3ヶ月以内に動きたい', '半年以内でOK', '1年以内で計画中'] },
       { text: 'Q3. 引っ越しの移動距離は？', opts: ['同じ市区町村内', '同じ県内', '隣県・近隣エリア', '遠距離・全国どこでも'] },
-      { text: 'Q4. 荷物の量は？', opts: ['単身・荷物少なめ', '2人暮らし程度', '家族3〜4人分', '大家族・荷物多め'] },
+      { text: 'Q4. 家族構成（引っ越し人数）は？', opts: ['一人（単身）', '二人暮らし', '3〜4人家族', '5人以上の大家族'], icons: ['01-07', '01-07', '01-08', '01-08'] },
       { text: 'Q5. 引っ越し予算の目安は？', opts: ['5万円以下', '5〜15万円', '15〜30万円', '30万円以上'] },
     ];
 
@@ -756,8 +759,11 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
       document.getElementById('q-bar').parentElement.setAttribute('aria-valuenow', pct);
       document.getElementById('q-text').textContent = q.text;
       document.getElementById('q-back').style.display = cur > 0 ? 'block' : 'none';
+      const hasIcons = q.icons && q.icons.length;
       document.getElementById('q-options').innerHTML = q.opts.map((o, i) =>
-        `<button class="quiz-opt" onclick="answer(${i})" aria-label="${o}" data-idx="${i}">${o}</button>`
+        hasIcons
+          ? `<button class="quiz-opt quiz-opt-icon" onclick="answer(${i})" aria-label="${o}" data-idx="${i}"><img src="assets/icons/split/${q.icons[i]}.png" alt="" class="quiz-opt-img"><span>${o}</span></button>`
+          : `<button class="quiz-opt" onclick="answer(${i})" aria-label="${o}" data-idx="${i}">${o}</button>`
       ).join('');
       document.getElementById('q-options').querySelectorAll('.quiz-opt').forEach(btn => {
         btn.addEventListener('keydown', (e) => {

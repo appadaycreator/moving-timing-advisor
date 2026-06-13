@@ -194,6 +194,14 @@ footer{background:#1f2937;color:#d1d5db;padding:32px 20px;text-align:center;}
 
 /* Cookie banner */
 #lp-cookie-banner{position:fixed;bottom:0;left:0;right:0;background:#1e293b;color:#f1f5f9;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;z-index:9999;font-size:.85rem;box-shadow:0 -2px 10px rgba(0,0,0,.3);}
+
+/* Sticky mobile bottom CTA */
+.sticky-bottom-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #e5e7eb;padding:10px 16px;display:none;align-items:center;justify-content:space-between;z-index:150;box-shadow:0 -4px 16px rgba(0,0,0,.12);}
+.sticky-bottom-logo{display:flex;align-items:center;gap:8px;font-weight:700;color:#0369A1;font-size:13px;}
+.sticky-bottom-logo img{width:24px;height:24px;object-fit:contain;}
+.btn-sticky-cta{background:#F97316;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;transition:opacity .2s;}
+.btn-sticky-cta:hover{opacity:.9;}
+@media(max-width:768px){.sticky-bottom-cta{display:flex;}body{padding-bottom:64px;}}
 </style>
 </head>
 <body>
@@ -241,16 +249,36 @@ footer{background:#1f2937;color:#d1d5db;padding:32px 20px;text-align:center;}
             <div style="font-size:11px;opacity:.8;">おすすめの引越し時期</div>
             <div style="font-size:16px;font-weight:700;color:#F97316;">5月中旬〜6月上旬</div>
           </div>
-          <div class="phone-chart">
-            <div class="phone-bar-wrap" style="flex:1;">
-              <div style="font-size:11px;opacity:.8;margin-bottom:4px;">3月</div>
-              <div style="background:#fca5a5;height:70px;border-radius:4px 4px 0 0;width:100%;"></div>
-              <div style="font-size:10px;opacity:.7;">¥120,000</div>
+          <div class="phone-chart" style="gap:4px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <div style="font-size:9px;opacity:.8;">3月</div>
+              <div style="background:#fca5a5;height:60px;border-radius:3px 3px 0 0;width:100%;"></div>
+              <div style="font-size:8px;opacity:.7;">高</div>
             </div>
-            <div class="phone-bar-wrap" style="flex:1;">
-              <div style="font-size:11px;opacity:.8;margin-bottom:4px;">5月</div>
-              <div style="background:rgba(255,255,255,.6);height:46px;border-radius:4px 4px 0 0;width:100%;"></div>
-              <div style="font-size:10px;opacity:.7;">¥78,000</div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <div style="font-size:9px;opacity:.8;">4月</div>
+              <div style="background:#fca5a5;height:55px;border-radius:3px 3px 0 0;width:100%;"></div>
+              <div style="font-size:8px;opacity:.7;">高</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <div style="font-size:9px;font-weight:700;color:#F97316;">5月</div>
+              <div style="background:rgba(255,255,255,.85);height:36px;border-radius:3px 3px 0 0;width:100%;"></div>
+              <div style="font-size:8px;font-weight:700;color:#F97316;">安</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <div style="font-size:9px;font-weight:700;color:#F97316;">6月</div>
+              <div style="background:rgba(255,255,255,.85);height:33px;border-radius:3px 3px 0 0;width:100%;"></div>
+              <div style="font-size:8px;font-weight:700;color:#F97316;">安</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <div style="font-size:9px;opacity:.8;">7月</div>
+              <div style="background:rgba(255,255,255,.5);height:42px;border-radius:3px 3px 0 0;width:100%;"></div>
+              <div style="font-size:8px;opacity:.7;">普</div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">
+              <div style="font-size:9px;opacity:.8;">9月</div>
+              <div style="background:rgba(255,255,255,.5);height:40px;border-radius:3px 3px 0 0;width:100%;"></div>
+              <div style="font-size:8px;opacity:.7;">普</div>
             </div>
           </div>
         </div>
@@ -564,6 +592,25 @@ footer{background:#1f2937;color:#d1d5db;padding:32px 20px;text-align:center;}
   </div>
   <p class="footer-copy">© 2026 AppADayCreator. All rights reserved.</p>
 </footer>
+
+<!-- Sticky Mobile Bottom CTA -->
+<div class="sticky-bottom-cta" id="sticky-bottom">
+  <div class="sticky-bottom-logo">
+    <img src="../assets/icons/split/01-01.png" alt="">
+    引っ越し時期・費用診断
+  </div>
+  <a href="../index.html" class="btn-sticky-cta">今すぐ診断する →</a>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('sticky-bottom');
+  if(!el)return;
+  window.addEventListener('scroll',function(){
+    var show=window.scrollY>200;
+    el.style.display=show?'flex':'none';
+  },{passive:true});
+})();
+</script>
 
 <!-- Cookie Banner -->
 <div id="lp-cookie-banner">
