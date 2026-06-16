@@ -35,6 +35,7 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="引っ越し時期・費用診断【無料】最適な時期と節約額を即診断">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
@@ -263,6 +264,7 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
   .calendar-grid{grid-template-columns:repeat(6,1fr);}
 }
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"「引っ越し時期・費用診断」は無料で使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい、完全無料・登録不要です。"}},{"@type":"Question","name":"スマートフォンでも使えますか？","acceptedAnswer":{"@type":"Answer","text":"はい、モバイル対応済みです。"}}]}</script>
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXQGZRF9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -378,6 +380,60 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
             <p id="r-desc" class="result-text-body"></p>
           </div>
 
+          <!-- M4: Visualization Charts -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;">
+              <div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:12px;">📊 月別費用推移</div>
+              <canvas id="monthlyTrendChart" style="max-height:200px;"></canvas>
+            </div>
+            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px;">
+              <div style="font-size:13px;font-weight:700;color:#374151;margin-bottom:12px;">💰 繁忙期vs閑散期</div>
+              <canvas id="comparisonChart" style="max-height:200px;"></canvas>
+            </div>
+          </div>
+
+          <!-- M6: Goal Tracking -->
+          <div style="background:#FFF7ED;border:1px solid #fed7aa;border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:700;color:#9a3412;margin-bottom:10px;">🎯 目標予算トラッキング</div>
+            <div style="display:flex;gap:8px;align-items:flex-end;margin-bottom:10px;">
+              <input type="number" id="goalBudgetInput" placeholder="目標予算を入力（例：100000）" style="flex:1;padding:8px 12px;border:1px solid #fed7aa;border-radius:8px;font-size:13px;">
+              <button onclick="saveGoalBudget()" style="background:#F97316;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">保存</button>
+            </div>
+            <div id="goalProgress" style="display:none;">
+              <div style="font-size:12px;color:#9a3412;margin-bottom:4px;">目標達成度: <span id="goalPercentage">0</span>%</div>
+              <div style="width:100%;height:8px;background:#fed7aa;border-radius:4px;overflow:hidden;">
+                <div id="goalBar" style="height:100%;background:#F97316;width:0%;transition:width .3s;"></div>
+              </div>
+              <div style="font-size:11px;color:#9a3412;margin-top:4px;">目標: <span id="goalValue">0</span>円 / 最適価格: <span id="bestPrice">0</span>円</div>
+            </div>
+          </div>
+
+          <!-- M7: Comparison Simulator -->
+          <div style="background:#EFF6FF;border:1px solid #bae6fd;border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="font-size:13px;font-weight:700;color:#0369A1;margin-bottom:10px;">⚖️ パターン比較・シミュレーション</div>
+            <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+              <button onclick="simulatePattern('single')" style="background:#0369A1;color:#fff;padding:8px 14px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">単身（近距離）</button>
+              <button onclick="simulatePattern('couple')" style="background:#0369A1;color:#fff;padding:8px 14px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">2人暮らし</button>
+              <button onclick="simulatePattern('family')" style="background:#0369A1;color:#fff;padding:8px 14px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">3〜4人家族</button>
+              <button onclick="simulatePattern('large')" style="background:#0369A1;color:#fff;padding:8px 14px;border:none;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;">5人以上</button>
+            </div>
+            <div id="comparisonTable" style="overflow-x:auto;">
+              <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                <thead>
+                  <tr style="border-bottom:2px solid #0369A1;">
+                    <th style="text-align:left;padding:8px;color:#0369A1;font-weight:700;">パターン</th>
+                    <th style="text-align:right;padding:8px;color:#0369A1;font-weight:700;">閑散期</th>
+                    <th style="text-align:right;padding:8px;color:#0369A1;font-weight:700;">通常期</th>
+                    <th style="text-align:right;padding:8px;color:#0369A1;font-weight:700;">繁忙期</th>
+                    <th style="text-align:right;padding:8px;color:#0369A1;font-weight:700;">節約額</th>
+                  </tr>
+                </thead>
+                <tbody id="comparisonBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <!-- Monthly calendar -->
           <div class="monthly-calendar">
             <div class="calendar-title">
@@ -461,9 +517,17 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
           <div class="result-actions">
             <a id="r-share-twitter" href="#" target="_blank" rel="noopener" class="btn-share-x" aria-label="診断結果をXでシェア">𝕏 結果をシェア</a>
             <a id="r-share-line" href="#" target="_blank" rel="noopener" class="btn-share-line" aria-label="診断結果をLINEでシェア">LINE でシェア</a>
-            <button class="btn-retry" onclick="location.reload()" aria-label="もう一度診断する">
+            <button class="btn-retry" onclick="window.print()" aria-label="診断結果を印刷する">
               <img src="assets/icons/split/03-02.png" alt="">
-              もう一度診断
+              印刷する
+            </button>
+            <button class="btn-retry" onclick="copyResultToClipboard()" aria-label="診断結果をクリップボードにコピー">
+              <img src="assets/icons/split/03-02.png" alt="">
+              結果をコピー
+            </button>
+            <button class="btn-retry" onclick="downloadResultAsCSV()" aria-label="診断結果をCSVでダウンロード">
+              <img src="assets/icons/split/03-02.png" alt="">
+              CSVダウンロード
             </button>
           </div>
 
@@ -592,30 +656,44 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
           <span>引越し費用を最も安くできる時期はいつですか？</span>
           <div class="faq-icon-btn">+</div>
         </div>
-        <div class="faq-a-text">一般的に6月・9月・11月〜1月が閑散期で料金が安くなります。特に平日・午後便・フレックス便を選ぶとさらに割引を受けられることが多いです。本ツールでは月別の繁閑度と料金目安を表示します。</div>
+        <div class="faq-a-text">引越し料金が最も安くなるのは6月・9月・11月〜1月の閑散期です。繁忙期（3〜4月・8月のお盆前後）は需要が集中するため料金が1.5〜2倍以上になることも珍しくありません。特に3月末〜4月上旬は年度替わりの引越しが集中するため最も高く、予約も数ヶ月前から埋まります。同じ閑散期でも平日・午後便・フレックス便（時間指定なし）を選ぶとさらに10〜30%の割引を受けられることが多いです。本ツールでは月別の繁閑度と料金目安を入力条件に合わせて表示します。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           <span>繁忙期でも費用を抑える方法はありますか？</span>
           <div class="faq-icon-btn">+</div>
         </div>
-        <div class="faq-a-text">繁忙期でも「時間指定なし便（フレックス便）」「夜間便」「単身パック」など柔軟なプランを選ぶことで費用を抑えられます。また、早めに予約するほど希望日時を確保しやすくなります。</div>
+        <div class="faq-a-text">繁忙期でも費用を抑える方法はいくつかあります。①「フレックス便（時間指定なし）」を選ぶと前の現場の状況によって時間が変わる代わりに割安になります。②単身引越しなら「単身パック（コンテナ式）」が通常のトラック1台より大幅に安い場合があります。③複数社から相見積もりを取り交渉することで5〜20%の値引きが期待できます。④不要品を事前に処分して荷物量を減らすことも効果的です。⑤引越し日を月末より月中にする（月末は集中するため）と料金が下がる場合があります。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           <span>家族4人の引越し費用の相場はどのくらいですか？</span>
           <div class="faq-icon-btn">+</div>
         </div>
-        <div class="faq-a-text">同一市内なら5〜10万円、近隣県なら10〜20万円、遠距離（例：東京〜大阪）なら20〜35万円程度が目安です。ただし繁忙期は1.5〜2倍になる場合があります。本ツールでより詳細な条件を入力して相場を確認してください。</div>
+        <div class="faq-a-text">3〜4人家族の引越し費用の目安は移動距離によって大きく変わります。同一市内の近距離引越しなら5〜10万円、近隣県（100km程度）なら10〜20万円、遠距離（東京〜大阪など400km以上）なら25〜45万円程度が閑散期の目安です。繁忙期（3〜4月）はこれの1.5〜2倍になる場合があります。荷物量・エレベーターの有無・不要品の処分有無などによっても大きく変動するため、本ツールでより詳細な条件を入力してから複数の業者に相見積もりを依頼することをお勧めします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>引越し業者を選ぶときのチェックポイントは？</span>
+          <div class="faq-icon-btn">+</div>
+        </div>
+        <div class="faq-a-text">引越し業者を選ぶ際の主なチェックポイントは①複数社の相見積もりを取る（最低3社以上）、②見積もり項目の内訳を詳しく確認する（追加料金が発生しないか）、③口コミ・評判を確認する（GoogleMapやSNS）、④当日の作業員数・トラックのサイズが見積もり通りか確認する、⑤トラブル時の損害賠償対応について確認する、の5点です。大手引越し業者は安心感がある一方で割高なことも多く、地域密着型の中小業者は価格競争力があることがあります。見積もり比較サイトを活用すると効率的です。</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           <span>入力した情報はサーバーに送られますか？</span>
           <div class="faq-icon-btn">+</div>
         </div>
-        <div class="faq-a-text">すべての処理はブラウザ内で完結します。入力した情報が外部サーバーに送信されることはなく、プライバシーも保護されます。</div>
+        <div class="faq-a-text">すべての処理はブラウザ内で完結します。入力した引越し条件・日程情報が外部サーバーに送信されることはなく、プライバシーも完全に保護されます。本ツールはアカウント登録不要・完全無料でご利用いただけます。</div>
       </div>
     </div>
+  </div>
+
+  <!-- About section -->
+  <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:12px;padding:16px 20px;margin-bottom:16px">
+    <h3 style="font-size:14px;font-weight:700;color:#0c4a6e;margin-bottom:8px">ℹ️ このツールについて</h3>
+    <p style="font-size:13px;color:#0c4a6e;line-height:1.85;margin-bottom:8px">「引越し時期・費用診断」はAppADayCreatorが提供する無料Webツールです。引越し予定日・移動距離・家族構成・荷物量などの条件を入力するだけで、月別の繁閑状況と概算費用の目安を自動算出します。引越しの一般的な繁忙期・閑散期のパターンと料金相場データをもとに、コストを抑えた最適な引越し時期を提案します。</p>
+    <p style="font-size:13px;color:#0c4a6e;line-height:1.85">本ツールの結果は参考情報です。実際の料金は引越し業者・地域・条件によって大きく異なります。必ず複数社から見積もりを取り、最終的な判断はご自身でお願いします。ブラウザ内完結型のため入力情報はサーバーに送信されません。</p>
   </div>
 
   <!-- Use cases info cards -->
@@ -790,21 +868,228 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
       else renderQ();
     }
 
+    // M4: グラフ描画関数
+    function drawCharts(bestPrice) {
+      const monthLabels = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+      const monthPrices = [140000, 160000, 200000, 190000, 85000, 80000, 110000, 115000, 100000, 95000, 130000, 145000];
+
+      // 月別費用推移グラフ
+      const monthCtx = document.getElementById('monthlyTrendChart').getContext('2d');
+      new Chart(monthCtx, {
+        type: 'line',
+        data: {
+          labels: monthLabels,
+          datasets: [{
+            label: '月別費用目安',
+            data: monthPrices,
+            borderColor: '#0369A1',
+            backgroundColor: 'rgba(3, 105, 161, 0.1)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointBackgroundColor: '#0369A1',
+            pointHoverRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 220000,
+              ticks: {
+                callback: v => '¥' + (v / 1000).toFixed(0) + 'k'
+              }
+            }
+          }
+        }
+      });
+
+      // 繁忙期vs閑散期の比較グラフ
+      const compCtx = document.getElementById('comparisonChart').getContext('2d');
+      const peakPrice = 200000;
+      const offPeakPrice = bestPrice;
+      const savings = peakPrice - offPeakPrice;
+      new Chart(compCtx, {
+        type: 'bar',
+        data: {
+          labels: ['繁忙期（3〜4月）', 'おすすめ時期（5〜6月）', '節約額'],
+          datasets: [{
+            label: '費用',
+            data: [peakPrice, offPeakPrice, savings],
+            backgroundColor: ['#fca5a5', '#0369A1', '#F97316']
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            y: {
+              ticks: {
+                callback: v => '¥' + (v / 1000).toFixed(0) + 'k'
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // M6: 目標予算を保存・復元
+    function saveGoalBudget() {
+      const input = document.getElementById('goalBudgetInput');
+      const goal = parseInt(input.value);
+      if (goal > 0) {
+        localStorage.setItem('movingGoalBudget', goal);
+        updateGoalProgress();
+      }
+    }
+
+    function updateGoalProgress() {
+      const goal = parseInt(localStorage.getItem('movingGoalBudget')) || 0;
+      if (goal === 0) {
+        document.getElementById('goalProgress').style.display = 'none';
+        return;
+      }
+
+      const bestPrice = parseInt(document.getElementById('r-share-twitter').getAttribute('data-best-price')) || 98000;
+      const pct = Math.min(100, Math.round((bestPrice / goal) * 100));
+
+      document.getElementById('goalProgress').style.display = 'block';
+      document.getElementById('goalPercentage').textContent = pct;
+      document.getElementById('goalBar').style.width = pct + '%';
+      document.getElementById('goalValue').textContent = goal.toLocaleString();
+      document.getElementById('bestPrice').textContent = bestPrice.toLocaleString();
+      document.getElementById('goalBudgetInput').value = goal;
+    }
+
+    // M7: パターン比較・シミュレーション
+    function simulatePattern(pattern) {
+      const patterns = {
+        single: { name: '単身（近距離）', offPeak: 35000, normal: 50000, peak: 80000 },
+        couple: { name: '2人暮らし', offPeak: 65000, normal: 90000, peak: 150000 },
+        family: { name: '3〜4人家族', offPeak: 98000, normal: 130000, peak: 200000 },
+        large: { name: '5人以上', offPeak: 140000, normal: 180000, peak: 280000 }
+      };
+
+      const p = patterns[pattern];
+      const tbody = document.getElementById('comparisonBody');
+      tbody.innerHTML = '';
+
+      Object.values(patterns).forEach(pat => {
+        const row = document.createElement('tr');
+        row.style.borderBottom = '1px solid #e5e7eb';
+        const savings = pat.peak - pat.offPeak;
+        row.innerHTML = `
+          <td style="padding:8px;color:#374151;">${pat.name}</td>
+          <td style="padding:8px;text-align:right;color:#0369A1;font-weight:600;">¥${pat.offPeak.toLocaleString()}</td>
+          <td style="padding:8px;text-align:right;color:#6b7280;">¥${pat.normal.toLocaleString()}</td>
+          <td style="padding:8px;text-align:right;color:#dc2626;">¥${pat.peak.toLocaleString()}</td>
+          <td style="padding:8px;text-align:right;color:#F97316;font-weight:700;">¥${savings.toLocaleString()}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
     function showResult() {
       document.getElementById('quiz-area').style.display = 'none';
       const r = getResult(ans);
       document.getElementById('r-title').textContent = r.title;
       document.getElementById('r-desc').textContent = r.desc;
+
+      // M4, M6, M7: 価格計算と可視化
+      const bestPrice = calculateBestPrice(ans);
+      document.getElementById('r-share-twitter').setAttribute('data-best-price', bestPrice);
+
       const siteUrl = 'https://appadaycreator.com/moving-timing-advisor/';
       const shareText = '🚚 診断結果: ' + r.title + ' #引っ越し';
       document.getElementById('r-share-twitter').href =
         'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(siteUrl);
       document.getElementById('r-share-line').href =
         'https://line.me/R/msg/text/?' + encodeURIComponent(shareText + '\n' + siteUrl);
+
       document.getElementById('result').classList.add('show');
       if (document.getElementById('ad-top')) document.getElementById('ad-top').style.display = 'block';
       if (document.getElementById('ad-bottom')) document.getElementById('ad-bottom').style.display = 'block';
-      setTimeout(() => document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+
+      // グラフ・トラッキング・比較を描画
+      setTimeout(() => {
+        drawCharts(bestPrice);
+        updateGoalProgress();
+        simulatePattern('family');
+        document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    // 回答から最適価格を計算
+    function calculateBestPrice(answers) {
+      const [reason, timing, dist, load, budget] = answers.map(a => a.idx);
+      let basePrice = 100000;
+
+      if (load === 0 && (dist === 0 || dist === 1)) basePrice = 35000;
+      else if (load === 0) basePrice = 50000;
+      else if (load === 1 && dist <= 1) basePrice = 65000;
+      else if (load === 1) basePrice = 90000;
+      else if (load === 2 && dist <= 1) basePrice = 98000;
+      else if (load === 2) basePrice = 130000;
+      else basePrice = 180000;
+
+      return basePrice;
+    }
+
+    // M10: 結果をクリップボードにコピー
+    function copyResultToClipboard() {
+      const title = document.getElementById('r-title').textContent;
+      const desc = document.getElementById('r-desc').textContent;
+      const text = `診断結果: ${title}\n\n${desc}\n\n詳細: https://appadaycreator.com/moving-timing-advisor/`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('診断結果をクリップボードにコピーしました！');
+      }).catch(() => {
+        alert('コピーに失敗しました。ブラウザの機能を確認してください。');
+      });
+    }
+
+    // M10: 結果をCSVでダウンロード
+    function downloadResultAsCSV() {
+      const title = document.getElementById('r-title').textContent;
+      const desc = document.getElementById('r-desc').textContent;
+      const date = new Date().toISOString().split('T')[0];
+
+      // CSV形式で構成
+      const csv = [
+        ['引っ越し時期・費用診断 - 診断結果'],
+        [''],
+        ['診断日', date],
+        ['診断結果', title],
+        [''],
+        ['診断アドバイス'],
+        [desc],
+        [''],
+        ['費用目安', '¥78,000 〜 ¥118,000（閑散期）'],
+        ['節約額', '¥42,000'],
+        [''],
+        ['詳細情報', 'https://appadaycreator.com/moving-timing-advisor/']
+      ]
+        .map(row => row.map(cell => `"${cell.replace(/"/g, '""')}"`).join(','))
+        .join('\n');
+
+      // CSVファイルを生成・ダウンロード
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `moving-diagnosis-${date}.csv`);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
 </script>
 </body>
